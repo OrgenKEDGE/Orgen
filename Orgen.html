@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orgren</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleLogin(signup) {
+      document.getElementById("login-modal").classList.remove("hidden");
+      document.getElementById("login-title").innerText = signup ? "Create Your Orgren Account" : "Login to Orgren";
+      document.getElementById("signup-name").style.display = signup ? "block" : "none";
+      document.getElementById("toggle-text").innerText = signup ? "Already have an account? Login" : "Don't have an account? Sign Up";
+    }
+    function closeModal() {
+      document.getElementById("login-modal").classList.add("hidden");
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <style>
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-green-50 text-green-900 font-sans">
+  <header class="bg-[#0D3513] p-6 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="logo.png" alt="Orgren Logo" class="w-10 h-10">
+        <h1 class="text-3xl font-bold text-white">Orgren <span class="text-green-300">🌿</span></h1>
+      </div>
+      <div class="flex gap-4">
+        <button onclick="toggleLogin(false)" class="border border-white px-4 py-2 rounded text-white">Login</button>
+        <button onclick="toggleLogin(true)" class="border border-white px-4 py-2 rounded text-white">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-xl w-full max-w-md relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-green-700">X</button>
+      <h3 id="login-title" class="text-2xl font-bold text-green-800 mb-4">Login to Orgren</h3>
+      <input type="email" placeholder="Email" class="w-full border p-2 rounded mb-2">
+      <input type="password" placeholder="Password" class="w-full border p-2 rounded mb-2">
+      <input type="text" id="signup-name" placeholder="Full Name" class="w-full border p-2 rounded mb-2 hidden">
+      <div class="mb-2">
+        <label><input type="radio" name="role" value="farmer" checked> Farmer</label>
+        <label class="ml-4"><input type="radio" name="role" value="waste-manager"> Waste Manager</label>
+      </div>
+      <button class="bg-[#0D3513] text-white w-full p-2 rounded">Submit</button>
+      <p id="toggle-text" class="text-sm text-green-700 mt-2 underline cursor-pointer" onclick="toggleLogin(true)">Don't have an account? Sign Up</p>
+    </div>
+  </div>
+
+  <main class="p-6 max-w-6xl mx-auto">
+    <section class="text-center mb-10">
+      <h2 class="text-4xl font-bold mb-2">Empowering Farmers Organically</h2>
+      <p class="text-lg text-green-700 mb-6">Creating a sustainable circular economy for farmers, products, and waste management</p>
+      <div class="fade-in">
+        <p class="text-xl text-green-800 font-semibold mb-2 italic">Organic: Growing goodness naturally for a healthier future.<br> Taste the pure difference; invest in a sustainable, healthy world.</p>
+        <p class="text-xl text-green-800 font-semibold italic">Agri-waste to wealth: Smart farming turns scraps into green.</p>
+      </div>
+    </section>
+
+    <section id="fertilizers" class="mb-10">
+      <h3 class="text-3xl font-bold text-green-800 mb-4 text-center">Buy Organic Fertilizers</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border rounded-xl shadow overflow-hidden">
+          <img src="https://source.unsplash.com/featured/?compost" class="h-40 w-full object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-bold text-green-800">Compost Mix</h4>
+            <p class="text-green-600 mb-2">€10/Bag</p>
+            <input placeholder="Quantity" class="border p-2 w-full mb-2 rounded">
+            <button class="w-full bg-[#0D3513] text-white p-2 rounded">Order</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="mb-10">
+      <h3 class="text-3xl font-bold text-green-800 mb-4 text-center">Sell Organic Products</h3>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <input placeholder="Product Name" class="border p-2 w-full mb-2 rounded">
+        <input placeholder="Quantity & Unit" class="border p-2 w-full mb-2 rounded">
+        <input placeholder="Your Contact Info" class="border p-2 w-full mb-2 rounded">
+        <button class="bg-[#0D3513] text-white w-full p-2 rounded">Submit for Listing</button>
+      </div>
+    </section>
+
+    <section id="waste" class="mb-10">
+      <h3 class="text-3xl font-bold text-green-800 mb-4 text-center">Sell Agricultural Waste</h3>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <input placeholder="Type of Waste" class="border p-2 w-full mb-2 rounded">
+        <input placeholder="Approximate Quantity" class="border p-2 w-full mb-2 rounded">
+        <input placeholder="Pickup Location" class="border p-2 w-full mb-2 rounded">
+        <input placeholder="Your Contact Info" class="border p-2 w-full mb-2 rounded">
+        <button class="bg-[#0D3513] text-white w-full p-2 rounded">Notify Waste Management Companies</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-green-600 text-sm p-6 bg-green-100 relative">
+    <p class="mt-2">© 2025 Orgren. Supporting Sustainable Agriculture.</p>
+    <button onclick="scrollToTop()" class="absolute bottom-4 right-6 bg-[#0D3513] hover:bg-green-600 text-white p-2 rounded-full shadow-lg">↑</button>
+  </footer>
+</body>
+</html>
